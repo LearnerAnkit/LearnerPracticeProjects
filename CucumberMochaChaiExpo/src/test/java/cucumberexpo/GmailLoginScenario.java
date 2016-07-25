@@ -58,7 +58,7 @@ public class GmailLoginScenario {
     @Then("^User logs into Gmail$")
     public void loggedIn(){
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
-        Assert.assertTrue(driver.getTitle().contentEquals("inbox - ankitphalniker@gmail.com - Gmail"));
+        Assert.assertTrue(driver.getTitle().contentEquals(""));
 
     }
 }
