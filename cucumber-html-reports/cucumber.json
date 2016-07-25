@@ -1,0 +1,81 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 6426108612,
+              "status": "passed"
+            },
+            "match": {
+              "location": "GmailLoginScenario.setUp()"
+            }
+          }
+        ],
+        "line": 2,
+        "name": "Login to gmail with valid credentials",
+        "description": "",
+        "id": "to-test-gmail-login;login-to-gmail-with-valid-credentials",
+        "after": [
+          {
+            "result": {
+              "duration": 714241585,
+              "status": "passed"
+            },
+            "match": {
+              "location": "GmailLoginScenario.tearDown()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5381649225,
+              "status": "passed"
+            },
+            "line": 3,
+            "name": "The gmail login page is loaded",
+            "match": {
+              "location": "GmailLoginScenario.loadGmailPage()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2656118559,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "User enters the credentials",
+            "match": {
+              "location": "GmailLoginScenario.enterCredentials()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2518191588,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat cucumberexpo.GmailLoginScenario.loggedIn(GmailLoginScenario.java:61)\r\n\tat ✽.Then User logs into Gmail(testfeatures.feature:5)\r\n",
+              "status": "failed"
+            },
+            "line": 5,
+            "name": "User logs into Gmail",
+            "match": {
+              "location": "GmailLoginScenario.loggedIn()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "To test gmail login",
+    "description": "",
+    "id": "to-test-gmail-login",
+    "keyword": "Feature",
+    "uri": "testfeatures.feature"
+  }
+]
