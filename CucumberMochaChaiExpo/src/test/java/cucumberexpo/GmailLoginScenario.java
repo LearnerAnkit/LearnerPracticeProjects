@@ -48,10 +48,10 @@ public class GmailLoginScenario {
     @When("^User enters the credentials$")
     public void enterCredentials(){
 
-        driver.findElement(By.id("Email")).sendKeys("");
+        driver.findElement(By.id("")).sendKeys();
         driver.findElement(By.id("next")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(((By.id("Passwd")))));
-        driver.findElement(By.id("Passwd")).sendKeys("");
+        driver.findElement(By.id("")).sendKeys();
         driver.findElement(By.id("signIn")).click();
     }
 
