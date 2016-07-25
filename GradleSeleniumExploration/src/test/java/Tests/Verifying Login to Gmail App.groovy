@@ -31,7 +31,7 @@ class Verifying extends LoginPage
     @Test
     public static void "Verifying Login to Gmail App"(){
 
-        LoginPage.enterUsername("ankitphalniker@gmail.com")
+        LoginPage.enterUsername("")
     }
 
     @AfterTest
