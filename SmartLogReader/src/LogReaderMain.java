@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -20,10 +21,10 @@ public class LogReaderMain extends LogReportCreator {
 	
 	 public void trainSentDectectModel() throws IOException {
          // directory to save the model file that is to be generated, create this directory in prior
-         File destDir = new File("E:\\Learning & Exploring\\OpenNLP ML\\");
+         File destDir = new File("A:\\OpenNLP ML\\");
   
          // training data
-         InputStreamFactory in = new MarkableFileInputStreamFactory(new File("C:\\Users\\Learner\\Desktop\\logs.txt"));
+         InputStreamFactory in = new MarkableFileInputStreamFactory(new File("A:\\Softwares\\logs.txt"));
   
          // parameters used by machine learning algorithm, Maxent, to train its weights
          TrainingParameters mlParams = new TrainingParameters();
@@ -41,8 +42,12 @@ public class LogReaderMain extends LogReportCreator {
          // loading the model
          SentenceDetectorME sentDetector = new SentenceDetectorME(sentdetectModel); 
          
-         File dir = new File("C:\\Users\\Learner\\Desktop\\logs\\");
-         File[] directoryListing = dir.listFiles();
+         File dir = new File("A:\\Softwares\\logs\\");
+         File[] directoryListing = dir.listFiles(new FilenameFilter() {
+        	    public boolean accept(File dir, String name) {
+        	        return name.toLowerCase().endsWith(".txt");
+        	    }
+        	});
          if (directoryListing != null) {
            for (File child : directoryListing) {
          //"C:\\Users\\Learner\\Desktop\\logs - Copy.txt"
@@ -61,9 +66,11 @@ public class LogReaderMain extends LogReportCreator {
         	 if(sents[i].contains("Error")) {
         		 
         		 System.out.println("Sentence "+(i+1)+" : "+sents[i]);	 
-        		// LogReportCreator.excelReporter(sents[i]);
+        		
         	 }
           }	
+         
+         LogReportCreator.excelReporter(sents);
            }
          } else {
            // Handle the case where dir is not really a directory.

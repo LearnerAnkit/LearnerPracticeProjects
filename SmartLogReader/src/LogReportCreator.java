@@ -9,30 +9,29 @@
 
 public class LogReportCreator {
 	
-	public static  void excelReporter(String error) {
+	public static  void excelReporter(String[] error) {
 	
-		 final String FILE_NAME = "C:\\Users\\Learner\\Desktop\\logs\\MyFirstExcel.xlsx";
+		 final String FILE_NAME = "A:\\Softwares\\logs\\MyFirstExcel.xlsx";
 
 		        XSSFWorkbook workbook = new XSSFWorkbook();
 		        XSSFSheet sheet = workbook.createSheet("Erros in Hourly Log File");
 		        Object[][] datatypes = {
 		                {"Errors"},
 		                {error} };
-
-		        int rowNum = 0;
+                String[] datatypes1 = error;
+		        int rowNum = 1;
 		        
-		        for (Object[] datatype : datatypes) {
+		        for (String datatype1 : datatypes1) {
 		            Row row = sheet.createRow(rowNum++);
 		            int colNum = 0;
-		            for (Object field : datatype) {
 		                Cell cell = row.createCell(colNum++);
-		                if (field instanceof String) {
-		                    cell.setCellValue((String) field);
-		                } else if (field instanceof Integer) {
-		                    cell.setCellValue((Integer) field);
+		                if (datatype1 instanceof String) {
+		                    cell.setCellValue(datatype1);
+		                } else  {
+		                    cell.setCellValue(Integer.parseInt(datatype1));
 		                }
 		            }
-		        }
+		        
 
 		        try {
 		            FileOutputStream outputStream = new FileOutputStream(FILE_NAME);
