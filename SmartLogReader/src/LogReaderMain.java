@@ -24,7 +24,7 @@ public class LogReaderMain extends LogReportCreator {
          File destDir = new File("A:\\OpenNLP ML\\");
   
          // training data
-         InputStreamFactory in = new MarkableFileInputStreamFactory(new File("A:\\Softwares\\logs.txt"));
+         InputStreamFactory in = new MarkableFileInputStreamFactory(new File("A:\\Softwares\\Test-log.txt"));
   
          // parameters used by machine learning algorithm, Maxent, to train its weights
          TrainingParameters mlParams = new TrainingParameters();
@@ -45,34 +45,34 @@ public class LogReaderMain extends LogReportCreator {
          File dir = new File("A:\\Softwares\\logs\\");
          File[] directoryListing = dir.listFiles(new FilenameFilter() {
         	    public boolean accept(File dir, String name) {
-        	        return name.toLowerCase().endsWith(".txt");
+        	     return name.toLowerCase().endsWith(".txt");
         	    }
         	});
-         if (directoryListing != null) {
-           for (File child : directoryListing) {
-         //"C:\\Users\\Learner\\Desktop\\logs - Copy.txt"
+        
+         if (directoryListing != null)  {
+        	 
+           for (File child : directoryListing)  {
+        
          //detecting sentences in the test string
          String content = new Scanner(child).useDelimiter("\\Z").next();
          String childName = child.getName();
-        // System.out.println(content);
          String testString = (content);
-        //System.out.println("\nTest String: "+testString);
          String[] sents = sentDetector.sentDetect(testString);
          System.out.println("Name:"+childName);
          System.out.println("---------Sentences Detected by the SentenceDetector ME class using the generated model-------");
         
-         for(int i=0;i<sents.length;i++){
-        	 
-        	 if(sents[i].contains("Error")) {
-        		 
-        		 System.out.println("Sentence "+(i+1)+" : "+sents[i]);	 
-        		
-        	 }
+         for(int i=0;i<sents.length;i++)
+         {        	 
+        	 if(sents[i].contains("Select"))
+        	 {        		 
+        	 System.out.println("Sentence "+(i+1)+" : "+sents[i]);	 
+          	 }
           }	
-         
-         LogReportCreator.excelReporter(sents);
+             LogReportCreator.excelReporter(sents);
            }
-         } else {
+         }
+         else
+         {
            // Handle the case where dir is not really a directory.
            // Checking dir.isDirectory() above would not be sufficient
            // to avoid race conditions with another process that deletes
@@ -80,37 +80,17 @@ public class LogReaderMain extends LogReportCreator {
          }
  }
 	
-	   public static void main(String args[]) throws Exception { 
-		     
-		   
-		   try {
+	   public static void main(String args[]) throws Exception
+	   { 
+		   try 
+		   {
 	            new LogReaderMain().trainSentDectectModel();
-	        } catch (IOException e) {
+	        } 
+		   catch (IOException e)
+		   {
 	            e.printStackTrace();
 	        }
-		         
-//		      InputStream logData = new FileInputStream("C://Users//Learner//Desktop//logs.txt");
-//		      String logSent = logData.toString();
-//		      
-//		      String content = new Scanner(new File("C://Users//Learner//Desktop//logs.txt")).useDelimiter("\\Z").next();
-//		      //System.out.println(content);
-//		      //Loading a sentence model 
-//		      InputStream inputStream = new FileInputStream("F://Softwares and Docs//Softwares//Apache OpenNLP//Models//en-sent.bin"); 
-//		      SentenceModel model = new SentenceModel(inputStream); 
-//		       
-//		      //Instantiating the SentenceDetectorME class 
-//		      SentenceDetectorME detector = new SentenceDetectorME(model);  
-//		       
-//		      //Detecting the position of the sentences in the paragraph  
-//		      Span[] spans = detector.sentPosDetect(content);  
-//		      
-//		      //Printing the sentences and their spans of a paragraph 
-//		      for (Span span : spans)  {        
-//		         System.out.println(content.substring(span.getStart(), span.getEnd())+" "+ span);  
-//		   }
-		      
-
 		} 
-	   }
+	}
 
 
