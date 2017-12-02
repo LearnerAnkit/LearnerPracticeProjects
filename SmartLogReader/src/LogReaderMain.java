@@ -21,10 +21,10 @@ public class LogReaderMain extends LogReportCreator {
 	
 	 public void trainSentDectectModel() throws IOException {
          // directory to save the model file that is to be generated, create this directory in prior
-         File destDir = new File("A:\\OpenNLP ML\\");
+         File destDir = new File(Configurations.destinationDirectory);
   
          // training data
-         InputStreamFactory in = new MarkableFileInputStreamFactory(new File("A:\\Softwares\\Test-log.txt"));
+         InputStreamFactory in = new MarkableFileInputStreamFactory(new File(Configurations.trainingDataSource));
   
          // parameters used by machine learning algorithm, Maxent, to train its weights
          TrainingParameters mlParams = new TrainingParameters();
@@ -42,7 +42,7 @@ public class LogReaderMain extends LogReportCreator {
          // loading the model
          SentenceDetectorME sentDetector = new SentenceDetectorME(sentdetectModel); 
          
-         File dir = new File("A:\\Softwares\\logs\\");
+         File dir = new File(Configurations.fileToRunAgainst);
          File[] directoryListing = dir.listFiles(new FilenameFilter() {
         	    public boolean accept(File dir, String name) {
         	     return name.toLowerCase().endsWith(".txt");

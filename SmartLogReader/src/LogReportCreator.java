@@ -11,7 +11,7 @@ public class LogReportCreator {
 	
 	public static  void excelReporter(String[] error) {
 	
-		 final String FILE_NAME = "A:\\Softwares\\logs\\MyFirstExcel.xlsx";
+		 final String FILE_NAME = Configurations.destinationDirectory+"MyFirstExcel.xlsx";
 
 		        XSSFWorkbook workbook = new XSSFWorkbook();
 		        XSSFSheet sheet = workbook.createSheet("Erros in Hourly Log File");
