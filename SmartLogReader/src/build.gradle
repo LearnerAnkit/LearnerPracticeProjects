@@ -1,0 +1,2 @@
+// https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools
+compile group: 'org.apache.opennlp', name: 'opennlp-tools', version: '1.5.2-incubating'
